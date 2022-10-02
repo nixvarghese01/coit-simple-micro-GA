@@ -29,6 +29,8 @@ jobs:
       # Build package using npm 
       - name: build npm 
         run: | 
+         git clone https://github.com/nixvarghese01/coit-simple-micro-GA.git
+         cd coit-frontend 
          npm install && npm run build
       
       # Docker Login
@@ -42,7 +44,7 @@ jobs:
       # Build container image 
       - name: build container image  
         run: | 
-         docker build nixvarghese03/coit-simple-micro-ga:latest -f Dockerfile-multistage
+         docker build coit-frontend -t nixvarghese03/coit-simple-micro-ga:latest -f coit-frontend/Dockerfile-multistage
      
       # push container image 
       - name: push container image  
