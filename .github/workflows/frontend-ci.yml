@@ -42,7 +42,7 @@ jobs:
         env: 
          sonarqube_project: ${{ secrets.SONARQUBE_PROJECT }}
          api_key: ${{ secrets.API_KEY }}
-         sonarqube_url: ${{ secrets. SONARQUBE_URL }}
+         sonarqube_url: ${{ secrets.SONARQUBE_URL }}
         run: |   
          cd coit-frontend
          $HOME/sonarqube/sonar-scanner-$sonar_scanner_version/bin/sonar-scanner \
