@@ -48,6 +48,18 @@ jobs:
           -Dsonar.sources=. \
           -Dsonar.host.url=$sonarqube_url \
           -Dsonar.login=$api_key    
+          
+      # Run unit Test
+      - name: run unit test  
+        run: | 
+         cd coit-frontend
+         npm test || true 
+         
+      # check vulnerabilities of dependancy 
+      - name: run unit test  
+        run: | 
+         cd coit-frontend
+         npm audit || true
     
       # Docker Login
       - name: Docker login
