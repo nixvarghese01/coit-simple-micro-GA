@@ -30,8 +30,6 @@ jobs:
     
       # setup sonar scanner 
       - name: Setup Sonar-Scanner
-        env: 
-         version: 4.7.0.2747-linux
         run: | 
          wget "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$sonar_scanner_version.zip"
          unzip sonar-scanner-cli-$sonar_scanner_version.zip -d $HOME/sonarqube
@@ -48,7 +46,7 @@ jobs:
          $HOME/sonarqube/sonar-scanner-$sonar_scanner_version/bin/sonar-scanner \
           -Dsonar.projectKey=$sonarqube_project \
           -Dsonar.sources=. \
-          -Dsonar.host.url=$ sonarqube_url\
+          -Dsonar.host.url=$sonarqube_url \
           -Dsonar.login=$api_key    
     
       # Docker Login
