@@ -15,6 +15,10 @@ on:
 #global environment variable 
 env: 
  sonar_scanner_version: 4.7.0.2747-linux
+ PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+ GKE_CLUSTER: champion2    # Add your cluster name here.
+ GKE_ZONE: us-west1-a   # Add your cluster zone here.
+ 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -78,4 +82,24 @@ jobs:
       - name: push container image  
         run: | 
          docker push nixvarghese03/coit-simple-micro-ga:latest 
-      
+         
+      # Setup gcloud CLI
+      - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+          
+      # Get the GKE credentials so we can deploy to the cluster
+      - uses: google-github-actions/get-gke-credentials@fb08709ba27618c31c09e014e1d8364b02e5042e
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
+          
+      # Deploy the Docker image to the GKE cluster
+      - name: Deploy
+        run: |
+          cd manifest-coit-frontend
+          kubectl apply -k .
+          
+          
