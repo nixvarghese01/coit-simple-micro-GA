@@ -99,7 +99,8 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |
+          kubectl create namespace preview 
           cd manifest-coit-frontend
-          kubectl apply -k .
+          kubectl apply -k . 
           
           
