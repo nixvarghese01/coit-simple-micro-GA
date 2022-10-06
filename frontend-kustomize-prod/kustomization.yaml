@@ -32,7 +32,7 @@ commonLabels:
   managed-by: kustomize
 Images:
 
-  - newName: nnixvarghese03/coit-simple-micro-GA
+  - newName: nixvarghese03/coit-simple-micro-GA
     newtag: latest
     name: nixvarghese03/coit-simple-micro-GA 
 
