@@ -1,3 +1,14 @@
+# This is final production build and deploy
+
+name: CD - deploy to production 
+
+# Controls when the workflow will run
+on:
+# Triggers the workflow on push or pull request events but only for the "master" branch 
+  create:
+    tags:
+     - 'v*'
+     
 #global environment variable 
 env: 
  sonar_scanner_version: 4.7.0.2747-linux
