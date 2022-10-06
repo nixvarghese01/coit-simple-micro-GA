@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: production
+namespace: stage
 
 resources:  
   - frontend-deployment.yaml
@@ -24,17 +24,17 @@ patches:
     kind: Deployment
     name: frontend
    
-namePrefix: customer1
-nameSuffix: myapp
+namePrefix: customer1-
+nameSuffix: -myapp
 commonLabels:
   customer: customer1
   location: DXB
   managed-by: kustomize
 Images:
 
-  - newName: nixvarghese03/frontend
-    newtag: v1
-    name: nixvarghese03/frontend 
+  - newName: nixvarghese03/coit-simple-micro-GA
+    newtag: latest
+    name: nixvarghese03/coit-simple-micro-GA
 
 configMapGenerator:
   - name: frontend-map
