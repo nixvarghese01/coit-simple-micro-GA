@@ -13,12 +13,13 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
 #global environment variable 
-  env: 
-    sonar_scanner_version: 4.7.0.2747-linux
-    PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-    GKE_CLUSTER: champion2 # Add your cluster name here.
-    GKE_ZONE: us-west1-a # Add your cluster zone here.
+env: 
+  sonar_scanner_version: 4.7.0.2747-linux
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: champion2 # Add your cluster name here.
+  GKE_ZONE: us-west1-a # Add your cluster zone here.
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
