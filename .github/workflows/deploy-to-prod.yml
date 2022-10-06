@@ -57,8 +57,8 @@ jobs:
           kubectl apply -k .
 
       # Delete stage namespace 
-      - name: Delete prod namespace
-        run: | 
-         sleep 60
-         kubectl delete namespace prod
+      #- name: Delete prod namespace
+      #  run: | 
+      #  sleep 60
+      #   kubectl delete namespace prod
      
