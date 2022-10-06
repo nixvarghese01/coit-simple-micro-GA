@@ -102,7 +102,7 @@ jobs:
        - name: Deploy
          run: |
           kubectl create namespace stage
-          cd manifest-coit-frontend
+          cd frontend-kustomize-stage
           kubectl apply -k . 
 
        # Check the sonarqube report here
